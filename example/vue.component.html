@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component初识组件</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>Component 初识组件</h1>
+<hr>
+
+<div id="app">
+    <zhizi></zhizi>
+    <br/>
+    <panda></panda>
+</div>
+<!--<zhizi></zhizi>-->
+<div id="app1">
+    <br/>
+    <p>全局组件测试</p>
+    <zhizi></zhizi>
+
+    <br/>
+    <p>局部组件测试</p>
+    <!--控制台报错-->
+    <panda></panda>
+
+</div>
+
+<script>
+    Vue.component('zhizi',{
+       template:`<div style="color: red">我是全局注册的zhizi组件</div>`
+    });
+    var app = new Vue({
+        el:"#app",
+        components:{
+            "panda":{
+                template:`<div style="color: green">我是局部注册的panda组件</div>`
+            }
+        }
+    });
+    var app1 = new Vue({
+        el:"#app1"
+    })
+</script>
+</body>
+</html>

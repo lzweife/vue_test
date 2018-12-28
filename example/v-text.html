@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+
+</head>
+<body>
+<h1>v-text&v-html指令</h1>
+<hr>
+<div id="app">
+    <!--当网速很慢或者javascript出错时，页面会暴露{{xxx}}，体验差-->
+    <span>{{message}}</span><br/>
+    <span v-text="message"></span><br/>
+    <span v-text="dodo"></span><br/>
+    <span v-html="dodo"></span><br/>
+
+</div>
+
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:'test test test',
+            dodo:'<h2>test</h2>'
+        }
+    })
+</script>
+</body>
+</html>

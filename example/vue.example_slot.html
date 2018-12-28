@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置组件slot</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>内置组件slot</h1>
+<hr>
+
+<div id="app">
+    <jspang>
+        <!--为组件模板的插槽传递传递分发内容-->
+        <span slot="blogUrl">{{jspangData.blogUrl}}</span>
+        <span slot="netName">{{jspangData.netName}}</span>
+        <span slot="skill">{{jspangData.skill}}</span>
+    </jspang>
+
+    <input type="button" id="btn" v-model="value" @click="test"/>
+</div>
+
+<template id="temp">
+    <div>
+        <!--模板内的插槽用来接收来自组件分发的内容-->
+        <p>博客地址：<slot name="blogUrl"></slot></p>
+        <p>网名：<slot name="netName"></slot></p>
+        <p>技术方向：<slot name="skill"></slot></p>
+    </div>
+</template>
+
+<script>
+    var jspangTemp = {
+        template:"#temp"
+    };
+    var app = new Vue({
+        el:"#app",
+        data:{
+            jspangData:{
+                blogUrl:'http://jspang.com',
+                netName:'Vue.js框架',
+                skill:'Web前端'
+            },
+            value:''
+
+        },
+        components:{
+            "jspang":jspangTemp
+        },
+        methods:{
+            test:function () {
+                let wait=60;
+                if (wait === 0) {
+                    this.value="免费获取验证码";
+                    wait = 60;
+                } else {
+                    this.value="重新发送(" + wait + ")";
+                    wait--;
+                }
+                setTimeout(function() {
+                    this.test();
+                }, 1000)
+
+            },
+            test1:function () {
+                console.log(123);
+            }
+        }
+    })
+</script>
+</body>
+</html>

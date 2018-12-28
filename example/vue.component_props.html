@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component组件props属性设置</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>Component组件props属性设置</h1>
+<hr>
+
+<div id="app">
+    <p>1.定义属性并获取属性值</p>
+    <panda here="China sichuan"></panda>
+    <br/>
+    <p>2.属性中带-的处理方式</p>
+    <panda from-here="China sichuan1"></panda>
+    <br/>
+    <p>3.在构造器里向组件中传值</p>
+    <panda v-bind:here="message"></panda>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+          message:'China'
+        },
+        components:{
+            "panda":{
+                template:`<div style="color: green">我是局部注册的panda组件，熊猫来自{{here}}{{fromHere}}</div>`,
+                props:['here','fromHere']
+            }
+        }
+    });
+</script>
+</body>
+</html>

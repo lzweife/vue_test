@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>实例方法</h1>
+<hr>
+
+<div id="app">
+
+</div>
+<p><button onclick="destroy()">卸载</button></p>
+<p><button onclick="reload()">更新</button></p>
+<p><button onclick="tick()">更改数据</button></p>
+
+
+<script>
+    var zhizi = Vue.extend({
+        template:`<p>{{message}}</p>`,
+        data:function () {
+            return{
+                message:'我是zhizi'
+            }
+        },
+        mounted:function () {
+            console.log("已挂载实例");
+        },
+        destroyed:function () {
+            console.log("已卸载实例");
+        },
+        updated:function () {
+            console.log("已更新实例");
+        }
+    });
+
+    var vm = new zhizi().$mount("#app");
+
+    function destroy() {
+        vm.$destroy();
+    }
+    function reload() {
+        vm.$forceUpdate();
+    }
+    function tick(){
+        vm.message="update message info ";
+        vm.$nextTick(function(){
+            console.log('message更新完后我被调用了');
+        })
+    }
+</script>
+</body>
+</html>

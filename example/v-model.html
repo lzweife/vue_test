@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+
+</head>
+<body>
+<h1>v-model指令</h1>
+<hr>
+<!--绑定数据源-->
+<div id="app">
+    <p>初始信息：{{message}}</p>
+    <hr>
+    <h3>文本框的数据源绑定</h3>
+
+
+    <p>v-model:<input type="text" v-model="message"><br/></p>
+    <!--input事件改为change事件进行输入监听-->
+    <p>v-model.lazy:<input type="text" v-model.lazy="message"><br/></p>
+    <!--只能输入数字-->
+    <p>v-model.number:<input type="text" v-model.number="message"></p>
+    <!---->
+    <p>v-model.trim:<input type="text" v-model.trim="message"></p>
+
+    <hr>
+    <h3>文本域的数据源绑定</h3>
+    <textarea cols="50" rows="10" v-model="message"></textarea>
+
+    <hr>
+    <h3>多选框绑定一个值</h3>
+    <input type="checkbox" id="isTrue" v-model="isTrue">
+    <label for="isTrue">{{isTrue}}</label>
+
+    <hr>
+    <h3>多选框绑定一个数组</h3>
+
+    <p>
+        <input type="checkbox" id="zhizi" value="智子" v-model="bind_name">
+        <label for="zhizi">zhizi</label>
+
+        <input type="checkbox" id="tom" value="汤姆" v-model="bind_name">
+        <label for="tom">tom</label>
+
+        <input type="checkbox" id="jack" value="杰克" v-model="bind_name">
+        <label for="jack">jack</label>
+    </p>
+    <p>选中姓名：{{bind_name}}</p>
+
+    <hr>
+    <h3>单选框数据源绑定</h3>
+    <p>
+        <input type="radio" id="one" value="男" v-model="gender">
+        <label for="one">男</label>
+        <input type="radio" id="two" value="女" v-model="gender">
+        <label for="two">女</label>
+    </p>
+    <p>选中性别：{{gender}}</p>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:'test',
+            isTrue:true,
+            bind_name:[],
+            gender:'男'
+        }
+    })
+</script>
+</body>
+</html>

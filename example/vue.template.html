@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template 制作模版</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+
+<h1>Template 制作模版(3种方法)</h1>
+<hr>
+
+<div id="app">
+    {{message}}
+</div>
+<template id="demo">
+    <h2>我是生成选项模板的第2种方法</h2>
+</template>
+
+<!--第3种方法-->
+<script type="x-template" id="demo2">
+    <h2>我是生成选项模板的第3种方法</h2>
+</script>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:'hello world'
+        },
+//        template:`<h2>我是生成选项模板的第1种方法</h2>` //第1种方法 适用于短模板
+//        template:"#demo"//第2种方法 适用于长模板
+        template:"#demo2" //第3种方法，适用于长模板，可进行外部引用
+    })
+</script>
+</body>
+</html>
